@@ -5,8 +5,16 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from magic8ball import yesOrNo
 from magic8ball import quotes
 
-TOKEN: Final = '8683549610:AAE-iufmHTT0VXPNES6qRzVKf6W_oqdA7xA'
-BOT_USERNAME: Final = '@PythonOptimusBot'
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN: Final = os.getenv('OPTIMUS_BOT_TOKEN')
+BOT_USERNAME: Final = os.getenv('OPTIMUS_USERNAME')
+
+print("Bot token loaded successfully")
+print("Bot username loaded successfully")
 
 #Commands
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):

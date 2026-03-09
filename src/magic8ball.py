@@ -10,12 +10,8 @@ def yesOrNo():
     return rand_answer
 
 def quotes():
-    Quote_list = ["You're gay (┬┬﹏┬┬)",
-                  "",
-                  "",
-                  "",
-                  ""]
-    rand_quote = [randint(0, len(Quote_list) - 1)]
+    Quote_list = ["You're gay (┬┬﹏┬┬)"
+                ]
+    rand_quote = Quote_list[randint(0, len(Quote_list) - 1)]
 
     return rand_quote
-                  

@@ -1,0 +1,7 @@
+# Never commit these for obvious reasons
+
+.env
+.venv
+
+src/__pycache__/
+
