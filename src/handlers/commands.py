@@ -7,7 +7,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def help_command(update:Update, context: ContextTypes.DEFAULT_TYPES):
-    await update.reply_text(
+    await update.message.reply_text(
         "I am Optimus Prime, I come from a planet called Cybertron, here to answer questions of your intellectually challenged brain🤖"
     )
 

@@ -1,7 +1,7 @@
 from magic8ball import yesOrNo, quotes
 
 TRIGGERS = {
-    "hello": lambda _: "Hello there!",
+    "hello": lambda _: f"Hello there!",
     "how are you": lambda _: "I am doing well, thank you for asking 👈(ﾟヮﾟ👈)",
     "who are you": lambda _: "I am Optimus Prime, AKA leader of the AutoBots, AKA Decepticon Demolisher, AKA Fulltime Energon sniffing expert, either you stand beside me or choke on my blaster while you grind and gurgle my sword with your teeth through the back of your skull. ♨︎_♨︎",
     "what is your name": lambda _: "I am Optimus Prime, AKA leader of the AutoBots, AKA Decepticon Demolisher, AKA Fulltime Energon sniffing expert, either you stand beside me or choke on my blaster while you grind and gurgle my sword with your teeth through the back of your skull. ♨︎_♨︎",
