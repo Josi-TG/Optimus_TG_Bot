@@ -1,4 +1,41 @@
-import sqlite3
+import requests
+import os
+from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+def log_message(user_id, username, chat, bot_response):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    url = f"{SUPABASE_URL}/rest/v1/messages"
+
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "timestamp": timestamp,
+        "user_id": user_id,
+        "username": username,
+        "chat": chat,
+        "bot_response": bot_response
+    }
+
+    response = requests.post(url, json=data, headers=headers)
+
+    print(response.status_code, response.text)
+
+    print("LOGGING FUNCTION CALLED")
+    print(data)
+
+
+'''import sqlite3
 from datetime import datetime
 from config.settings import DB_PATH
 from pathlib import Path
@@ -36,4 +73,6 @@ def get_user_messages(user_id: int):
         (user_id,)
     )
     return cursor.fetchall()
+
+'''
 
