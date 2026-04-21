@@ -10,7 +10,18 @@ def yesOrNo():
     return rand_answer
 
 def quotes():
-    Quote_list = ["You're gay (┬┬﹏┬┬)"
+    Quote_list = ["You're gay (┬┬﹏┬┬)", "If you take care of the minutes, the hours take care of themselves", 
+                  "There are decades where weeks happen, and weeks where decades happen.",
+                  "The water doesn't get warmer, the later you jump.",
+                  "Your level of success never exceeds your level of discipline.",
+                  "Consistent hard work stacks invisible advantages that nobody sees, until the world calls you 'lucky'.",
+                  "Don't practice until you get it right. Practice until you can't get it wrong.",
+                  "Discipline looks boring, until you see what it builds.",
+                  "Every wasted day is proof you don't want it."
+                  "Losers expect everything, while doing nothing. Winners expect nothing, while doing everything.",
+                  "You don't learn to swim by reading about it.",
+                  "A bad workout will always beat a skipped one.",
+                  "God only made you fail to see if you would keep going."
                 ]
     rand_quote = Quote_list[randint(0, len(Quote_list) - 1)]
 
