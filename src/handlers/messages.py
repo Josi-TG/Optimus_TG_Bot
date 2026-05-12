@@ -30,4 +30,5 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     log_message(user_id, username, text, response)
 
-    log_message(update.message.from_user.id, update.message.from_user.username or update.message.from_user.full_name, text, response)
+    '''log_message(update.message.from_user.id, update.message.from_user.username or update.message.from_user.full_name, text, response)
+'''

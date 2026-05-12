@@ -3,8 +3,8 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from config.settings import TOKEN
 from handlers.commands import start_command, help_command, custom_command
 from handlers.messages import handle_message
-from handlers.admin import logs_command
-from handlers.admin import stats_command
+from handlers.admin import logs_command, stats_command
+
 
 
 async def error(update, context):
@@ -21,6 +21,7 @@ def main():
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("custom", custom_command))
     app.add_handler(CommandHandler("logs", logs_command))
+    app.add_handler(CommandHandler("stats", stats_command))
 
     #Message Handler
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
