@@ -36,6 +36,7 @@ async def logs_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for log in logs:
         text += (
             f"👤 {log['username']}\n"
+            f"⏱️ {log['timestamp']}\n"
             f"💬 {log['chat']}\n"
             f"🤖 {log['bot_response']}\n\n"
         )

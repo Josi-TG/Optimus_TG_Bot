@@ -5,6 +5,8 @@ from handlers.commands import start_command, help_command, custom_command
 from handlers.messages import handle_message
 from handlers.admin import logs_command, stats_command
 
+from webserver import keep_alive
+
 
 
 async def error(update, context):
@@ -13,6 +15,8 @@ async def error(update, context):
 
 def main():
     print("Starting bot...")
+
+    keep_alive()
 
     app = Application.builder().token(TOKEN).build()
 
@@ -28,6 +32,7 @@ def main():
 
     #Error Handler
     app.add_error_handler(error)
+
 
     print("Polling...")
     app.run_polling(poll_interval=3)
