@@ -1,20 +1,24 @@
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
-from config.settings import TOKEN
+from config.settings import TOKEN, SUPABASE_URL
 from handlers.commands import start_command, help_command, custom_command
 from handlers.messages import handle_message
 from handlers.admin import logs_command, stats_command
 
 from webserver import keep_alive
 
+print("TOKEN: ", TOKEN)
 
+print("SUPABASE_URL: ", SUPABASE_URL)
 
 async def error(update, context):
     print(f"Update {update} caused error {context.error}")
 
 
+
 def main():
     print("Starting bot...")
+
 
     keep_alive()
 
