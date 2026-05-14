@@ -3,6 +3,7 @@ from telegram.ext import ContextTypes
 import os
 import requests
 from dotenv import load_dotenv
+from utils.auth import is_owner
 
 load_dotenv()
 
@@ -10,6 +11,10 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 async def logs_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_owner(update.effective_user.id):
+        await update.message.reply_text("You ain't got the facalities for that little man! 🤖")
+        return
+    
     url = f"{SUPABASE_URL}/rest/v1/messages?select=*&order=id.desc&limit=5"
 
     headers = {
@@ -44,6 +49,10 @@ async def logs_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(text)
 
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_owner(update.effective_user.id):
+        await update.message.reply_text("You ain't got the facalities for that little man! 🤖")
+        return
+    
     url = f"{SUPABASE_URL}/rest/v1/messages?select=*"
 
     headers = {
