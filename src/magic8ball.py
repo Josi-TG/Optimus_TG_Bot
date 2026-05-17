@@ -21,7 +21,9 @@ def quotes():
                   "Losers expect everything, while doing nothing. Winners expect nothing, while doing everything.",
                   "You don't learn to swim by reading about it.",
                   "A bad workout will always beat a skipped one.",
-                  "God only made you fail to see if you would keep going."
+                  "God only made you fail to see if you would keep going.",
+                  "The only thing that is enevitable is that this day will end.",
+                  "But why..."
                 ]
     rand_quote = Quote_list[randint(0, len(Quote_list) - 1)]
 
