@@ -39,6 +39,7 @@ def main():
 
 
     print("Polling...")
+    print("Bot connected to Telegram successfully")
     app.run_polling(poll_interval=3)
 
 if __name__ == "__main__":
