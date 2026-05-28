@@ -3,7 +3,7 @@ from telegram.ext import ContextTypes
 import os
 import requests
 from dotenv import load_dotenv
-from src.utils.auth import is_owner
+from utils.auth import is_owner
 
 load_dotenv()
 
