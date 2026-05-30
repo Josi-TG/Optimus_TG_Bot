@@ -17,30 +17,39 @@ async def error(update, context):
 
 
 def main():
-    print("Starting bot...")
-
+    print("STEP 1 - Starting bot")
 
     keep_alive()
+    print("STEP 2 - keep_alive returned")
 
     app = Application.builder().token(TOKEN).build()
+    print("STEP 3 - Application created")
 
-    #Command Handlers
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("custom", custom_command))
     app.add_handler(CommandHandler("logs", logs_command))
     app.add_handler(CommandHandler("stats", stats_command))
+    print("STEP 4 - Command handlers added")
 
-    #Message Handler
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
+    print("STEP 5 - Message handler added")
 
-    #Error Handler
     app.add_error_handler(error)
+    print("STEP 6 - Error handler added")
 
+    print("STEP 7 - About to start polling")
 
-    print("Polling...")
-    print("Bot connected to Telegram successfully")
-    app.run_polling(poll_interval=3)
+    print("Before polling")
+
+    try:
+        app.run_polling(poll_interval=3)
+    except Exception as e:
+        print(f"POLLING ERROR: {e}")
+
+    print("After polling")
+
+    print("STEP 8 - Polling exited")
 
 if __name__ == "__main__":
     main()
