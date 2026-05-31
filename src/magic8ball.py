@@ -23,7 +23,9 @@ def quotes():
                   "A bad workout will always beat a skipped one.",
                   "God only made you fail to see if you would keep going.",
                   "The only thing that is enevitable is that this day will end.",
-                  "But why..."
+                  "But why...",
+                  "Whatever happens, happens...",
+                  "Amateurs built the ark, while professionals built the Titanic."
                 ]
     rand_quote = Quote_list[randint(0, len(Quote_list) - 1)]
 
