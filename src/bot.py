@@ -11,6 +11,14 @@ from handlers.admin import logs_command, stats_command
 
 from webserver import keep_alive
 
+import signal
+
+def handle_sigterm(signum, frame):
+    print(f"RECEIVED SIGNAL: {signum}")
+
+signal.signal(signal.SIGTERM, handle_sigterm)
+signal.signal(signal.SIGINT, handle_sigterm)
+
 import logging
 
 logging.basicConfig(
