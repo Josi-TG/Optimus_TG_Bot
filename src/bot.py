@@ -1,3 +1,7 @@
+import threading
+import time
+from datetime import datetime
+
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
 from config.settings import TOKEN, SUPABASE_URL
@@ -14,13 +18,18 @@ print("SUPABASE_URL: ", SUPABASE_URL)
 async def error(update, context):
     print(f"Update {update} caused error {context.error}")
 
-
+def heartbeat():
+    while True:
+        print(f"BOT ALIVE - {datetime.now()}")
+        time.sleep(300)  # Log every 5 minutes
 
 def main():
     print("STEP 1 - Starting bot")
 
     keep_alive()
     print("STEP 2 - keep_alive returned")
+
+    threading.Thread(target=heartbeat, daemon=True).start()
 
     app = Application.builder().token(TOKEN).build()
     print("STEP 3 - Application created")
@@ -46,10 +55,14 @@ def main():
         app.run_polling(poll_interval=3)
     except Exception as e:
         print(f"POLLING ERROR: {e}")
+    finally:
+        print("Polling stopped!")
 
     print("After polling")
 
     print("STEP 8 - Polling exited")
+
+
 
 if __name__ == "__main__":
     main()
