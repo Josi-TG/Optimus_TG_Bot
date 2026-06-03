@@ -11,12 +11,26 @@ from handlers.admin import logs_command, stats_command
 
 from webserver import keep_alive
 
+import logging
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
+)
+
 print("TOKEN: ", TOKEN)
 
 print("SUPABASE_URL: ", SUPABASE_URL)
 
+import traceback
+
 async def error(update, context):
     print(f"Update {update} caused error {context.error}")
+    traceback.print_exception(
+        type(context.error),
+        context.error,
+        context.error.__traceback__
+    )
 
 def heartbeat():
     while True:
@@ -52,9 +66,13 @@ def main():
     print("Before polling")
 
     try:
-        app.run_polling(poll_interval=3)
+        print("Before polling")
+        app.run_polling(poll_interval=3,
+                        drop_pending_updates=False
+                        )
     except Exception as e:
-        print(f"POLLING ERROR: {e}")
+        print("POLLING CRASHED:", e)
+        raise
     finally:
         print("Polling stopped!")
 
