@@ -42,8 +42,11 @@ async def error(update, context):
 
 def heartbeat():
     while True:
-        print(f"BOT ALIVE - {datetime.now()}")
+        print(
+            f"BOT ALIVE | THREADS={threading.active_count()} | TIME={datetime.now()}"
+        )
         time.sleep(300)  # Log every 5 minutes
+        
 
 def main():
     print("STEP 1 - Starting bot")
@@ -72,11 +75,14 @@ def main():
     print("STEP 7 - About to start polling")
 
     print("Before polling")
+    print("MAIN THREAD:", threading.current_thread().name)
+    print("ACTIVE THREADS:", threading.active_count())
 
     try:
         print("Before polling")
         app.run_polling(poll_interval=3,
-                        drop_pending_updates=False
+                        drop_pending_updates=False,
+                        stop_signals=None
                         )
     except Exception as e:
         print("POLLING CRASHED:", e)
