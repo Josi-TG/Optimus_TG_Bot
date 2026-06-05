@@ -66,13 +66,19 @@ def main():
     app.add_error_handler(error)
 
 
-    print("Starting polling...")
+    try:
+        print("Before polling")
+        app.run_polling(poll_interval=3,
+                        drop_pending_updates=False,
+                        stop_signals=None
+                        )
+    except Exception as e:
+        print("POLLING CRASHED:", e)
+        raise
+    finally:
+        print("Polling stopped!")
 
-    app.run_polling(
-        poll_interval=3,
-        drop_pending_updates=False,
-        stop_signals=None
-    )
+    print("After polling")
 
 
 
