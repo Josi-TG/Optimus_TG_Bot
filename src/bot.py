@@ -26,9 +26,6 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-print("TOKEN: ", TOKEN)
-
-print("SUPABASE_URL: ", SUPABASE_URL)
 
 import traceback
 
@@ -49,50 +46,34 @@ def heartbeat():
         
 
 def main():
-    print("STEP 1 - Starting bot")
+
 
     keep_alive()
-    print("STEP 2 - keep_alive returned")
+
 
     threading.Thread(target=heartbeat, daemon=True).start()
 
     app = Application.builder().token(TOKEN).build()
-    print("STEP 3 - Application created")
 
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("custom", custom_command))
     app.add_handler(CommandHandler("logs", logs_command))
     app.add_handler(CommandHandler("stats", stats_command))
-    print("STEP 4 - Command handlers added")
 
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
-    print("STEP 5 - Message handler added")
 
     app.add_error_handler(error)
-    print("STEP 6 - Error handler added")
 
-    print("STEP 7 - About to start polling")
 
-    print("Before polling")
-    print("MAIN THREAD:", threading.current_thread().name)
-    print("ACTIVE THREADS:", threading.active_count())
+    print("Starting polling...")
 
-    try:
-        print("Before polling")
-        app.run_polling(poll_interval=3,
-                        drop_pending_updates=False,
-                        stop_signals=None
-                        )
-    except Exception as e:
-        print("POLLING CRASHED:", e)
-        raise
-    finally:
-        print("Polling stopped!")
+    app.run_polling(
+        poll_interval=3,
+        drop_pending_updates=False,
+        stop_signals=None
+    )
 
-    print("After polling")
-
-    print("STEP 8 - Polling exited")
 
 
 
