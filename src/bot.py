@@ -1,5 +1,3 @@
-import threading
-import time
 from datetime import datetime
 
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
@@ -9,7 +7,6 @@ from handlers.commands import start_command, help_command, custom_command
 from handlers.messages import handle_message
 from handlers.admin import logs_command, stats_command
 
-from webserver import keep_alive
 
 import signal
 
@@ -37,21 +34,11 @@ async def error(update, context):
         context.error.__traceback__
     )
 
-def heartbeat():
-    while True:
-        print(
-            f"BOT ALIVE | THREADS={threading.active_count()} | TIME={datetime.now()}"
-        )
-        time.sleep(300)  # Log every 5 minutes
-        
 
 def main():
 
+    print(f"BOT STARTED AT {datetime.now()})")
 
-    keep_alive()
-
-
-    threading.Thread(target=heartbeat, daemon=True).start()
 
     app = Application.builder().token(TOKEN).build()
 
