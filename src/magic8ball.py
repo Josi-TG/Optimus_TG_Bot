@@ -16,7 +16,7 @@ def quotes():
                   "Your level of success never exceeds your level of discipline.",
                   "Consistent hard work stacks invisible advantages that nobody sees, until the world calls you 'lucky'.",
                   "Don't practice until you get it right. Practice until you can't get it wrong.",
-                  "Discipline looks boring, until you see what it builds.",
+                  '''"Providence..."''',
                   "Every wasted day is proof you don't want it.",
                   "Losers expect everything, while doing nothing. Winners expect nothing, while doing everything.",
                   "You don't learn to swim by reading about it.",

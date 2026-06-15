@@ -37,7 +37,7 @@ async def error(update, context):
 
 def main():
 
-    print(f"BOT STARTED AT {datetime.now()})")
+    print(f"BOT STARTED AT {datetime.now()}")
 
 
     app = Application.builder().token(TOKEN).build()
