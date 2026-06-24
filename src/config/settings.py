@@ -13,3 +13,5 @@ DB_PATH: Final = os.getenv('DB_PATH') #Database file path
 
 SUPABASE_URL: Final = os.getenv("SUPABASE_URL")
 SUPABASE_KEY: Final = os.getenv("SUPABASE_KEY")
+
+WEBHOOK_URL: Final = os.getenv("WEBHOOK_URL")
