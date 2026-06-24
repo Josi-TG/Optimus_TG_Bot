@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, BackgroundTasks
 from telegram import Update
 
 from src.config.settings import TOKEN, WEBHOOK_URL
@@ -27,10 +27,10 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 async def root():
-    return {"status: alive"}
+    return {"status": "alive"}
 
 @app.post("/webhook")
-async def webhook(request: Request):
+async def webhook(request: Request, background_tasks: BackgroundTasks):
     data = await request.json()
 
     update = Update.de_json(
@@ -38,7 +38,7 @@ async def webhook(request: Request):
         telegram_app.bot
     )
 
-    await telegram_app.process_update(update)
+    background_tasks.add_task(telegram_app.process_update, update)
 
     return {"ok": True}
 
