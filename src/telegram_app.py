@@ -1,9 +1,9 @@
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
-from config.settings import TOKEN
-from handlers.commands import start_command, help_command, custom_command
-from handlers.messages import handle_message
-from handlers.admin import logs_command, stats_command
+from src.config.settings import TOKEN
+from src.handlers.commands import start_command, help_command, custom_command
+from src.handlers.messages import handle_message
+from src.handlers.admin import logs_command, stats_command
 
 import traceback
 

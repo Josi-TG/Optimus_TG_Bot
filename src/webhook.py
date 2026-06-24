@@ -3,8 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from telegram import Update
 
-from config.settings import TOKEN, WEBHOOK_URL
-from telegram_app import build_application
+from src.config.settings import TOKEN, WEBHOOK_URL
+from src.telegram_app import build_application
 
 telegram_app = build_application()
 
