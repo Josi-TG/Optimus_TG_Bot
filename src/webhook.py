@@ -19,7 +19,6 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    await telegram_app.bot.delete_webhook()
     await telegram_app.shutdown()
 
 
@@ -42,3 +41,7 @@ async def webhook(request: Request):
     await telegram_app.process_update(update)
 
     return {"ok": True}
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
