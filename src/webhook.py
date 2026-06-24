@@ -13,7 +13,7 @@ telegram_app = build_application()
 async def lifespan(app: FastAPI):
     await telegram_app.initialize()
 
-    await telegram_app.bot.set_webbook(WEBHOOK_URL)
+    await telegram_app.bot.set_webhook(WEBHOOK_URL)
 
     print(f"Webhook set to: {WEBHOOK_URL}")
 
