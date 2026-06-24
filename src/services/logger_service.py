@@ -37,7 +37,7 @@ def log_message(user_id, username, chat, bot_response):
 
 '''import sqlite3
 from datetime import datetime
-from config.settings import DB_PATH
+from src.config.settings import DB_PATH
 from pathlib import Path
 
 Path(DB_PATH).parent.mkdir(parents=True, exist_ok=True)
