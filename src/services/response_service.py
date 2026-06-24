@@ -1,4 +1,4 @@
-from magic8ball import yesOrNo, quotes
+from src.magic8ball import yesOrNo, quotes
 
 TRIGGERS = {
     "hey": lambda _: f"Hello there!",
